@@ -5,7 +5,11 @@ import { TodoCard } from "./ui/todoCard";
 import { Box, Heading , Text, Card, CardBody, Button, Spacer} from "@chakra-ui/react";
 import { useState,useEffect } from "react";
 import {  AddIcon } from '@chakra-ui/icons'
-
+interface Task {
+  
+  info: string;
+  task: string;
+}
 const HomePage = () => {
   const [tasks, setTasks] = useState([]); 
 
@@ -17,8 +21,8 @@ const HomePage = () => {
     }
   }, []); 
 
-  const handleDelete = (taskId: number) => {
-    const updatedTasks = tasks.filter((task) => task.task !== taskId);
+  const handleDelete = (taskId: string) => {
+    const updatedTasks = tasks.filter((task:Task) => task.task !== taskId);
     setTasks(updatedTasks);
     localStorage.setItem("task", JSON.stringify(updatedTasks));
   };

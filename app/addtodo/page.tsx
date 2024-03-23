@@ -28,17 +28,13 @@ const AddTodo = () => {
     return
     }
     let taskString: string | null = localStorage.getItem("task");
-    let allTask: [{ [key: string]: any }] | [] = [];
+    let allTask: [{ [key: string]: any }] | []|any = [];
 
     if (taskString) {
       allTask = JSON.parse(taskString);
-      allTask = [
-        ...allTask,
-        {
-          task: task.task,
-          info: task.info,
-        },
-      ];
+      allTask .push(
+       task
+      )
       localStorage.setItem("task", JSON.stringify(allTask));
       toast({
         title: "Task Add Successfully",
